@@ -1,17 +1,21 @@
 import React from 'react';
-import {Navbar, Nav} from 'react-bootstrap';
+import MpTableItem from "./MpTableItem";
+
+
 
 const Mainpage = (props) => {
+
+    let elements = props.tvs.map(e => <MpTableItem key={e.id} id={e.id} place={e.place} num={e.num} channel={e.channel}/>);
     return (
-        <section class="container">
-            <div class="bs-docs-section clearfix">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="page-header">
+        <section className="container">
+            <div className="bs-docs-section clearfix">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="page-header">
                             <h1>Главная страница</h1>
                         </div>
-
-                        <table class='table table-striped table-dark'>
+                        <table className='table table-striped table-dark'>
+                            <tbody>
                             <tr>
                                 <th>Id</th>
                                 <th>Локация</th>
@@ -19,21 +23,9 @@ const Mainpage = (props) => {
                                 <th>Канал</th>
                                 <th></th>
                             </tr>
-
-                            <tr>
-                            <td> tvs._id </td>
-                            <td> tvs.place ></td>
-                            <td> tvs.number </td>
-                            <td> tvs.channel </td>
-                            <td>
-                            <div class="float-left m-1">
-                            <a href="/play/<%= tvs._id %>?place=<%= tvs.place %>&num=<%= tvs.number %>&channel=<%= tvs.channel %>" class="btn btn-warning"><i class="fas fa-play"></i></a>
-                            </div>
-                            </td>
-                            </tr>
-
+                                {elements}
+                            </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
